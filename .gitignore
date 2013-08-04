@@ -1,0 +1,15 @@
+project-code/logs
+project-code/project/project
+project-code/project/target
+project-code/target
+project-code/tmp
+project-code/.history
+project-code/dist
+project-code/.idea
+project-code/*.iml
+project-code/out
+project-code/.idea_modules
+project-code/.classpath
+project-code/.project
+project-code/RUNNING_PID
+project-code/.settings
