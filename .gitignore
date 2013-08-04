@@ -11,5 +11,6 @@ project-code/out
 project-code/.idea_modules
 project-code/.classpath
 project-code/.project
+project-code/.target
 project-code/RUNNING_PID
 project-code/.settings
