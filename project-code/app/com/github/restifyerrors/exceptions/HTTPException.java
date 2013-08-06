@@ -52,7 +52,7 @@ public class HTTPException extends RuntimeException{
 	public JsonNode getJSON() {
 		ObjectNode jsonObj = play.libs.Json.newObject();
 		String message = this.getMessage();
-		jsonObj.put("error", "");
+		//jsonObj.put("error", "");
 		if (message != null) {
 			jsonObj.put("message", this.getMessage());
 		}
