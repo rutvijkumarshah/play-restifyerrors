@@ -13,7 +13,8 @@ import com.github.restifyerrors.exceptions.HTTPErrorType;
 import com.github.restifyerrors.exceptions.HTTPException;
 /***
  * 
- * RestfulErrorHandler converts any exception thrown from Service/API layer to proper HTTP Error. 
+ * RestfulErrorHandler converts any exception thrown from Service/API layer to proper HTTP Error.
+ *  
  * This will be annotated on Controller methods.
  * 
  * @author Rutvijkumar Shah
@@ -21,6 +22,13 @@ import com.github.restifyerrors.exceptions.HTTPException;
  */
 public class RESTfulErrorHandler extends Action.Simple {
 	
+	/****
+	 * Convert HTTP Error to Play.mvc.Result
+	 * 
+	 * @param type
+	 * @param json
+	 * @return
+	 */
 	private Result resultFromHttpErrorType(HTTPErrorType type,JsonNode json){
 		Result result=null;
 		if(type ==null ){
@@ -41,17 +49,18 @@ public class RESTfulErrorHandler extends Action.Simple {
 	}
 	
 	
+	@SuppressWarnings("unchecked")
 	@Override
-	public Result call(Context arg0) throws Throwable {
+	public Result call(Context context) {
 		Result result=null;
 		try{
 			//Intercepts the call and delegate to controller
-			result= delegate.call(arg0);
+			result= delegate.call(context);
 		}catch (HTTPException e) {
 			//Mapping API Exception to HTTP Errors 
 			JsonNode json = e.getJSON();
 			result=this.resultFromHttpErrorType(e.getHttpErrorType(), json);
-		}catch (Exception e) {
+		}catch (Throwable e) {
 			
 			result= internalServerError("Internal Error");//Default result
 			//checking registry to get exception mapping
@@ -72,6 +81,4 @@ public class RESTfulErrorHandler extends Action.Simple {
 		}
 		return result;
 	}
-	
-
 }

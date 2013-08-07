@@ -1,5 +1,11 @@
 package com.github.restifyerrors.exceptions;
 
+/****
+ * Represents list of HTTP Errors supported by this plugin
+ * 
+ * @author Rutvijkumar Shah
+ *
+ */
 public enum HTTPErrorType{
 	BAD_REQUEST,
 	FORBIDDEN_REQUEST,

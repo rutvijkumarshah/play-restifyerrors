@@ -9,13 +9,16 @@ import com.github.restifyerrors.exceptions.HTTPErrorType;
  * @author Rutvijkumar Shah
  *
  */
+@SuppressWarnings("rawtypes")
  class ExceptionInfo {
 	private HTTPErrorType errorType;
 	public HTTPErrorType getErrorType() {
 		return errorType;
 	}
+	
 	private Class exceptionClass;
 	private boolean subclassesConsidered;
+	
 	private ResultBuilder resultBuilder;
 	
 	public ExceptionInfo(Class exceptionKlass,HTTPErrorType httpError,boolean subclassesConsidered){

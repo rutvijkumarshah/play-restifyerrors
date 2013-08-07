@@ -13,6 +13,7 @@ import static play.test.Helpers.*;
 import static org.fest.assertions.Assertions.*;
 
 /***
+ * Unit Testcaes for Registry
  * 
  * @author Rutvijkumar Shah
  *
