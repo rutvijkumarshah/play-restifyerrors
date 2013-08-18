@@ -41,7 +41,7 @@ public final class RestifyErrorsRegistry {
 	 * @param httpError
 	 */
 	public static void registerStaticMapping(final Class exceptionClass,final HTTPErrorType httpError){
-		if(exceptionClass!=null && httpError  !=null){
+		if(exceptionClass!=null ){
 			staticRegistry.put(exceptionClass, new ExceptionInfo(exceptionClass, httpError,false));
 		}
 	}	
@@ -68,7 +68,7 @@ public final class RestifyErrorsRegistry {
 	 * @param httpError
 	 */
 	public static void registerDynamicMapping(final Class exceptionClass,final HTTPErrorType httpError){
-		if(exceptionClass!=null && httpError  !=null){
+		if(exceptionClass!=null ){
 			dynamicRegistryList.add(new ExceptionInfo(exceptionClass, httpError,true));
 		}
 	}
@@ -94,25 +94,35 @@ public final class RestifyErrorsRegistry {
 	 */
 	 protected static ExceptionInfo getExceptionInfo(final Throwable errorObj){
 		 ExceptionInfo exceptionInfo=null;
-		//Checking with static registry
-		exceptionInfo = staticRegistry.get(errorObj.getClass());
-		//Exception not found in static registry
-		//Looking up into dynamic registry
-		if(exceptionInfo==null){
-			for (ExceptionInfo registeredException : dynamicRegistryList) {
-				
-				//Matched with dynamic Registry's exception 
-				if(registeredException.getExceptionClass().equals(errorObj.getClass())){
-					exceptionInfo=registeredException;
-					break;
+		 if(errorObj!=null){
+			//Checking with static registry
+				exceptionInfo = staticRegistry.get(errorObj.getClass());
+				//Exception not found in static registry
+				//Looking up into dynamic registry
+				if(exceptionInfo==null){
+					for (ExceptionInfo registeredException : dynamicRegistryList) {
+						
+						//Matched with dynamic Registry's exception 
+						if(registeredException.getExceptionClass().equals(errorObj.getClass())){
+							exceptionInfo=registeredException;
+							break;
+						}
+						if(registeredException.getExceptionClass().isInstance(errorObj)){
+							exceptionInfo=registeredException;
+							break;
+						}
+					}
 				}
-				if(registeredException.getExceptionClass().isInstance(errorObj)){
-					exceptionInfo=registeredException;
-					break;
-				}
-			}
-		}
+		 }
 		return exceptionInfo;
 	} 
-	
+	 
+	/**
+	 * Clears Registry by clearing all items from static registry map and dynamic registry list
+	 * 
+	 */
+	protected static void clearRegistry(){
+		staticRegistry.clear();
+		dynamicRegistryList.clear();
+	}
 }

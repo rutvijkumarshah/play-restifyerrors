@@ -22,7 +22,10 @@ public class HTTPException extends RuntimeException{
 	protected Map<String,String> infos=new HashMap<String, String>();
 
 	protected HTTPErrorType httpErrorType=HTTPErrorType.INTERNAL_SERVER_ERROR;//Default if not specified 
-			
+	
+	public HTTPException(){
+		
+	}
 	public HTTPErrorType getHttpErrorType() {
 		return httpErrorType;
 	}
@@ -65,7 +68,7 @@ public class HTTPException extends RuntimeException{
 		if (this.messageKey != null) {
 			jsonObj.put("messageKey", this.messageKey);
 		}
-		if (this.infos != null & !this.infos.isEmpty()) {
+		if (this.infos != null && !this.infos.isEmpty()) {
 			ObjectNode infoObj = play.libs.Json.newObject();
 			for (Map.Entry<String, String>  item: infos.entrySet()) {
 				infoObj.put(item.getKey(), item.getValue());
