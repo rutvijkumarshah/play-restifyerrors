@@ -6,5 +6,8 @@ import org.junit.runner.RunWith;
 @RunWith(Suite.class)
 @Suite.SuiteClasses({ExceptionRegistryTest.class, HTTPExceptionTest.class})
 public class TestSuite {
-  //nothing
+ /***
+  * RESTErrorHandler's Test is not possible inside plugin project
+  * sample application has functional tests for RESTErrorHandler
+  */
 }
