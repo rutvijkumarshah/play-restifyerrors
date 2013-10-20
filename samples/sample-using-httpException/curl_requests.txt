@@ -1,0 +1,12 @@
+------------------------------------------------------------------------------------------------------------------------------------------------
+
+curl  --header "Content-type: application/json"  --request POST  --data '{"name": "John", "email": "john.doe@acme.com"}' http://localhost:9000/users
+curl  --header "Content-type: application/json"  --request POST  --data '{"name": "David", "email": "dev.doe@acme.com"}' http://localhost:9000/users
+curl  --request GET  http://localhost:9000/users/1
+curl  --request GET  http://localhost:9000/users
+curl  --request DELETE http://localhost:9000/users/1
+------------------------------------------------------------------------------------------------------------------------------------------------
+curl  --header "Content-type: application/json"  --request PUT  --data '{"name": "John2", "email": "john.doe@acme.com"}' http://localhost:9000/users/1
+curl  --header "Content-type: application/json"  --request POST  --data '{}' http://localhost:9000/users
+curl  --request DELETE http://localhost:9000/users/189983489349834598
+curl  --request GET http://localhost:9000/users/189983489349834598

@@ -5,8 +5,8 @@
 
 create table user (
   id                        bigint not null,
-  name                      varchar(255),
-  email_addres              varchar(255),
+  name                      varchar(255) not null,
+  email_address             varchar(255) not null,
   constraint pk_user primary key (id))
 ;
 

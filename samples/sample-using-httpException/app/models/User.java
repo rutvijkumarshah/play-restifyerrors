@@ -1,35 +1,55 @@
 package models;
 
+import com.avaje.ebean.validation.Email;
+import com.avaje.ebean.validation.NotNull;
 import play.db.ebean.Model;
 import java.util.*;
 import javax.persistence.*;
 
 import play.db.ebean.*;
 import play.data.format.*;
-import play.data.validation.*;
+import play.db.ebean.Model;
 
-/**
- * Created with IntelliJ IDEA.
- * User: Rutvijkumar Shah
- * Date: 8/19/13
- * Time: 8:01 AM
- * To change this template use File | Settings | File Templates.
- */
 
 @Entity
 public class User extends Model {
 
     @Id
-    @Constraints.Min(10)
-    public Long id;
+    private Long id;
 
-    @Constraints.Required
-    public String name;
+    @NotNull
+    private String name;
 
-    @Constraints.Email
-    public String emailAddres;
+    @NotNull
+    @Email
+    private String emailAddress;
 
     public static Finder<Long,User> find = new Finder<Long,User>(
             Long.class, User.class);
+
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getEmailAddress() {
+        return emailAddress;
+    }
+
+    public void setEmailAddress(String emailAddress) {
+        this.emailAddress = emailAddress;
+    }
 
 }

@@ -12,6 +12,7 @@ object ApplicationBuild extends Build {
     javaCore,
     javaJdbc,
     javaEbean,
+    "mysql" % "mysql-connector-java" % "5.1.24",
     "restify_errors" % "restify_errors_2.10" % "1.0-SNAPSHOT"
   )
 

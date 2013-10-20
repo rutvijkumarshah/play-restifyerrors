@@ -6,19 +6,14 @@ import com.github.restifyerrors.exceptions.HTTPErrorType;
 import com.github.restifyerrors.exceptions.HTTPException;
 import models.User;
 import org.codehaus.jackson.JsonNode;
+import com.avaje.ebean.Ebean;
+import play.data.Form;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Created with IntelliJ IDEA.
- * User: sharu03
- * Date: 8/18/13
- * Time: 4:58 PM
- * To change this template use File | Settings | File Templates.
- */
-public class APIHelper {
+public class Helper {
 
     public static List<User> getUsers(){
         return User.find.all();
@@ -33,17 +28,22 @@ public class APIHelper {
             }
             User user=new User();
             if(reqJson.get("email")!=null){
-                user.emailAddres=reqJson.get("email").asText();
+                user.setEmailAddress(reqJson.get("email").asText());
             }
             if(reqJson.get("name")!=null){
-                user.name=reqJson.get("name").asText();
+                user.setName(reqJson.get("name").asText());
             }
             user.save();
+
         }catch (ValidationException ve){
-            //HTTPErrorType httpErrorType,String message,Throwable exception,String messageKey, Map<String,String> infos)
             Map<String,String> infos=new HashMap<String,String>();
+            String value=null;
+
             for (InvalidValue invalidValue : ve.getErrors()) {
-                infos.put(invalidValue.getPropertyName(),invalidValue.getValue().toString());
+                if(invalidValue.getValue()!=null){
+                    value=invalidValue.getValue().toString();
+                }
+                infos.put(invalidValue.getPropertyName(),value);
             }
             throw new HTTPException(HTTPErrorType.BAD_REQUEST,"Bad Request",ve,"user-bad-request",infos);
         }
