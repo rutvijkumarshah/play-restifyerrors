@@ -19,7 +19,7 @@ import com.github.restifyerrors.execptions.AppDerivedException;
 import com.github.restifyerrors.execptions.AppDerivedIOException;
 
 /***
- * Unit Testcaes for Registry
+ * Unit Testcases for Registry
  * 
  * @author Rutvijkumar Shah
  *
