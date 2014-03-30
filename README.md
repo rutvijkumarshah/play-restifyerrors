@@ -50,7 +50,7 @@ public class Helper {
         }catch (ValidationException ve){
             Map<String,String> infos=new HashMap<String,String>();
             String value=null;
-
+            //Populating information map which will be sent as JSON with HTTP Response    
             for (InvalidValue invalidValue : ve.getErrors()) {
                 if(invalidValue.getValue()!=null){
                     value=invalidValue.getValue().toString();
