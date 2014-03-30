@@ -6,3 +6,27 @@ RestifyErrors provides non-intrusive way to manage error RESTFul responses in yo
 Using RestifyErrors moudle Play application does not need to explicitly code to return appropriate error responses.
 
 
+Example code using RestifyErrors:
+---------------------------------
+
+
+How to configure:
+------------------
+
+
+
+Usage :
+---------
+
+
+Sample Applications using RestifyErrors:
+--------------------------------------
+
+
+Contributions :
+--------------
+
+
+Version:
+---------
+Current Version : 0.0.7
