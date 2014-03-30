@@ -1,8 +1,5 @@
-Play RestifyErrors
+Play RestifyErrors [![Build Status](https://travis-ci.org/rutvijkumarshah/play-restifyerrors.svg?branch=master)](https://travis-ci.org/rutvijkumarshah/play-restifyerrors)
 ==============
-[![Build Status](https://travis-ci.org/rutvijkumarshah/restify_errors.svg?branch=master)](https://travis-ci.org/rutvijkumarshah/restify_errors)
-
-========
 RestifyErrors is micro-framework for exception mapping and converting exceptions into RESTFul responses for Play Applications.
 
 RestifyErrors provides non-intrusive way to manage error RESTFul responses in your play application.
