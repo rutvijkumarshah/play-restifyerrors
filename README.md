@@ -68,22 +68,55 @@ public class Helper {
 
 ```
 
-How to configure:
+Configuration in Build.scala:
 ------------------
+- Add restify_errors in application dependencies section 
+```
+    "restify_errors" % "restify_errors_2.10" % "0.0.7"
+```
+- Add URL resolver to Restify releases git repo
+```
+resolvers += Resolver.url("Restify Git Releases Repository", url("http://rutvijkumarshah.github.io/releases/"))(Resolver.ivyStylePatterns)
+    )
+```
+Following is sample Build.scala
+```
+import sbt._
+import Keys._
+import play.Project._
 
+object ApplicationBuild extends Build {
 
+  val appName         = "sample-using-httpException"
+  val appVersion      = "1.0-SNAPSHOT"
 
-Usage :
----------
+  val appDependencies = Seq(
+    // Add your project dependencies here,
+    javaCore,
+    javaJdbc,
+    javaEbean,
+    "mysql" % "mysql-connector-java" % "5.1.24",
+    "restify_errors" % "restify_errors_2.10" % "0.0.7"
+  )
 
+   val main = PlayProject(appName, appVersion, appDependencies, mainLang = JAVA).settings(
+      resolvers += Resolver.url("Restify Git Releases Repository", url("http://rutvijkumarshah.github.io/releases/"))(Resolver.ivyStylePatterns)
+    )
+}
 
-Sample Applications using RestifyErrors:
+```
+
+Sample Applications:
 --------------------------------------
-
+Sampple application show casing how to use RestifyErrors is under sample dir.
+```
+git clone https://github.com/rutvijkumarshah/play-restifyerrors.git
+cd play-restifyerrors/sample/sample-using-httpException
+```
 
 Contributions :
 --------------
-
+Currently this module is only supported for Java. Any pull request for scala implementation is welcome.
 
 Version:
 ---------
